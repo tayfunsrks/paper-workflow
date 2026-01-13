@@ -1,0 +1,1121 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: HF-DailyPaper
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.8@aae2be0913b8c6f0b80cff58e08d7a8b4c214569b41778413fcaea204561ff16
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 8b4740a5-4c00-47a3-b06f-00f253036386
+    name: Lark_token
+    selector:
+    - env
+    - Lark_token
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1768281883009-source-1768282297599-target
+      selected: false
+      source: '1768281883009'
+      sourceHandle: source
+      target: '1768282297599'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1768282297599-source-1768283018582-target
+      source: '1768282297599'
+      sourceHandle: source
+      target: '1768283018582'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: iteration-start
+        targetType: code
+      id: 1768283018582start-source-1768283049479-target
+      source: 1768283018582start
+      sourceHandle: source
+      target: '1768283049479'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: code
+        targetType: http-request
+      id: 1768283049479-source-1768283611046-target
+      source: '1768283049479'
+      sourceHandle: source
+      target: '1768283611046'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: llm
+        targetType: llm
+      id: 1768283669605-source-1768283741833-target
+      source: '1768283669605'
+      sourceHandle: source
+      target: '1768283741833'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: llm
+        targetType: code
+      id: 1768283741833-source-1768283839785-target
+      source: '1768283741833'
+      sourceHandle: source
+      target: '1768283839785'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: trigger-schedule
+        targetType: tool
+      id: 1765302564319-source-1768283895800-target
+      source: '1765302564319'
+      sourceHandle: source
+      target: '1768283895800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: http-request
+      id: 1768283895800-source-1768281883009-target
+      source: '1768283895800'
+      sourceHandle: source
+      target: '1768281883009'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: http-request
+        targetType: code
+      id: 1768283611046-source-1768295524185-target
+      source: '1768283611046'
+      sourceHandle: source
+      target: '1768295524185'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: code
+        targetType: llm
+      id: 1768295524185-source-1768283669605-target
+      source: '1768295524185'
+      sourceHandle: source
+      target: '1768283669605'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: code
+        targetType: http-request
+      id: 1768283839785-source-1768295797923-target
+      source: '1768283839785'
+      sourceHandle: source
+      target: '1768295797923'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        sourceType: http-request
+        targetType: loop-end
+      id: 1768295797923-source-1768297444787-target
+      source: '1768295797923'
+      sourceHandle: source
+      target: '1768297444787'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: end
+      id: 1768283018582-source-1768297474673-target
+      source: '1768283018582'
+      sourceHandle: source
+      target: '1768297474673'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        config:
+          frequency: daily
+          mode: visual
+          timezone: UTC
+          visual_config:
+            monthly_days:
+            - 1
+            on_minute: 0
+            time: 12:00 AM
+            weekdays:
+            - sun
+        frequency: daily
+        mode: visual
+        selected: false
+        timezone: Asia/Shanghai
+        title: 定时触发器
+        type: trigger-schedule
+        visual_config:
+          monthly_days:
+          - 1
+          on_minute: 36
+          time: 9:30 PM
+          weekdays:
+          - sun
+      height: 130
+      id: '1765302564319'
+      position:
+        x: 188.48656013280709
+        y: 164.5657072103032
+      positionAbsolute:
+        x: 188.48656013280709
+        y: 164.5657072103032
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+          (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36
+        method: get
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HF Daily Paper
+        type: http-request
+        url: https://huggingface.co/api/daily_papers
+        variables: []
+      height: 137
+      id: '1768281883009'
+      position:
+        x: 478.01938564894954
+        y: 319.9640062675769
+      positionAbsolute:
+        x: 478.01938564894954
+        y: 319.9640062675769
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(body: str):\n    try:\n        # 1. 将输入的字符串解析为\
+          \ JSON 对象 (List)\n        data = json.loads(body)\n        \n        # 2.\
+          \ 提取需要的信息并组成新的列表\n        parsed_list = []\n        for item in data:\n\
+          \            # 兼容处理：有时 paper 信息直接在 item 中，有时在 item['paper'] 中\n        \
+          \    # 根据你提供的数据结构，它在 item['paper'] 中\n            paper = item.get('paper',\
+          \ item)\n            \n            pid = paper.get('id')\n            title\
+          \ = paper.get('title')\n            summary = paper.get('summary')\n   \
+          \         upvotes = paper.get('upvotes', 0) # 默认为 0，防止字段缺失\n           \
+          \ \n            # 构造 ArXiv PDF 链接\n            pdf_link = f\"https://arxiv.org/pdf/{pid}.pdf\"\
+          \ if pid else None\n\n            parsed_list.append({\n               \
+          \ \"arxiv_id\": pid,\n                \"title\": title,\n              \
+          \  \"abstract\": summary,\n                \"upvotes\": upvotes,\n     \
+          \           \"pdf_link\": pdf_link\n            })\n            \n     \
+          \   # 3. 根据 upvotes 进行降序排序 (reverse=True)\n        # Python 的 sort 是稳定的，upvotes\
+          \ 相同的会保持原顺序\n        sorted_list = sorted(parsed_list, key=lambda x: x['upvotes'],\
+          \ reverse=True)\n        \n        # 4. 获取前三名 (Top 3)\n        top_3 = sorted_list[:3]\n\
+          \        \n        # 5. 返回结果字典，符合工作流输出要求\n        return {\n           \
+          \ \"result\": top_3\n        }\n        \n    except Exception as e:\n \
+          \       # 错误处理：如果解析失败，返回错误信息\n        return {\n            \"result\":\
+          \ [],\n            \"error\": str(e)\n        }\n"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: get_upvote_paper
+        type: code
+        variables:
+        - value_selector:
+          - '1768281883009'
+          - body
+          value_type: string
+          variable: body
+      height: 52
+      id: '1768282297599'
+      position:
+        x: 478.01938564894954
+        y: 483.4418345342038
+      positionAbsolute:
+        x: 478.01938564894954
+        y: 483.4418345342038
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        error_handle_mode: terminated
+        flatten_output: true
+        height: 594
+        is_parallel: false
+        iterator_input_type: array[object]
+        iterator_selector:
+        - '1768282297599'
+        - result
+        output_selector:
+        - '1768283049479'
+        - upvotes
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1768283018582start
+        title: 迭代
+        type: iteration
+        width: 691
+      height: 594
+      id: '1768283018582'
+      position:
+        x: 771.1182053094262
+        y: 185.5657072103032
+      positionAbsolute:
+        x: 771.1182053094262
+        y: 185.5657072103032
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 691
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1768283018582start
+      parentId: '1768283018582'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 795.1182053094262
+        y: 253.5657072103032
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: "\ndef main(arg1):\n    target_url = \"https://r.jina.ai/\" + arg1['pdf_link']\n\
+          \n    return {\n        \"paper_url\": arg1['pdf_link'],\n        \"target_url\"\
+          : target_url,\n        \"upvotes\": str(arg1['upvotes'])\n    }\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        outputs:
+          paper_url:
+            children: null
+            type: string
+          target_url:
+            children: null
+            type: string
+          upvotes:
+            children: null
+            type: string
+        selected: false
+        title: 获取信息&&JinaReader
+        type: code
+        variables:
+        - value_selector:
+          - '1768283018582'
+          - item
+          value_type: object
+          variable: arg1
+      height: 52
+      id: '1768283049479'
+      parentId: '1768283018582'
+      position:
+        x: 113.81789281288206
+        y: 66.22723660161029
+      positionAbsolute:
+        x: 884.9360981223083
+        y: 251.7929438119135
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        method: get
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Reader
+        type: http-request
+        url: '{{#1768283049479.target_url#}}'
+        variables: []
+      height: 124
+      id: '1768283611046'
+      parentId: '1768283018582'
+      position:
+        x: 415.81789281288206
+        y: 65.3408549024154
+      positionAbsolute:
+        x: 1186.9360981223083
+        y: 250.9065621127186
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 0e3c077a-6839-4347-b8cf-4c7047568e34
+          role: system
+          text: ''
+        - id: b77025d4-485f-489e-9488-c191f82392f8
+          role: user
+          text: '从用户给定的论文片段中提取论文题目，以下是论文片段:
+
+            {{#1768295524185.result#}}'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              authors:
+                description: 论文作者
+                type: string
+              organization:
+                description: 论文作者所在机构
+                type: string
+              title:
+                description: paper title
+                type: string
+            required:
+            - title
+            type: object
+        structured_output_enabled: true
+        title: EXTRACT
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1768283669605'
+      parentId: '1768283018582'
+      position:
+        x: 413.30557396198265
+        y: 233.7533777494403
+      positionAbsolute:
+        x: 1184.4237792714089
+        y: 419.31908495974346
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 72e1a3ca-3195-4175-b0e5-9a5b61e4e634
+          role: system
+          text: '根据用户给出的论文首先判断是否开源了相关论文代码，如果开源了代码就给出开源仓库链接，否则直接使用中文回答下列问题：
+
+
+            1.这篇论文要解决什么任务？回答标准：要能够给出具体的输入和输出样例。要有具体的例子，一句话说清楚，让没有接触过计算机科学的人都能听明白。
+
+            2. 这篇论文的任务的评估指标？回答标准：给出一个模型输出和标准答案，要能口算出指标数值。
+
+            3.这篇论文的方法为啥能提高指标？回答标准：找出它和baseline的本质不同的新设计。'
+        - id: 3fc139c8-42c1-4e7f-9a09-910e3f064a73
+          role: user
+          text: '论文内容如下：
+
+            {{#1768283611046.body#}}'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: Understand Agent
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1768283741833'
+      parentId: '1768283018582'
+      position:
+        x: 114.4500461780824
+        y: 262.4447494453318
+      positionAbsolute:
+        x: 885.5682514875086
+        y: 448.01045665563504
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(title: str, authors: str, organization: str,\
+          \ url: str, text: str, time:str, upvotes:str):\n    # 1. 使用 f-string 拼接字符串，比一堆\
+          \ + 号更清晰\n    # 注意：这里我们保留了原始内容，并没有删除双引号\n    full_content = f\"HF Daily\
+          \ Paper \\n点赞量：{upvotes} \\n{time}\\n{title}\\n{authors}\\n{organization}\\\
+          n{url}\\n{text}\"\n\n    # 2. 构造符合飞书/Lark 要求的完整字典结构\n    payload = {\n \
+          \       \"msg_type\": \"text\",\n        \"content\": {\n            \"\
+          text\": full_content\n        }\n    }\n\n    # 3. 核心步骤：使用 json.dumps 将字典转换为字符串\n\
+          \    # ensure_ascii=False 保证中文不会变成乱码\n    # 这个函数会自动处理所有的换行符(\\n)和双引号(\\\"\
+          )转义\n    json_string = json.dumps(payload, ensure_ascii=False)\n\n    return\
+          \ {\n        \"result\": json_string\n    }"
+        code_language: python3
+        desc: 整合飞书需要的json信息
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Lark Json
+        type: code
+        variables:
+        - value_selector:
+          - '1768283669605'
+          - structured_output
+          - title
+          value_type: object
+          variable: title
+        - value_selector:
+          - '1768283669605'
+          - structured_output
+          - authors
+          value_type: object
+          variable: authors
+        - value_selector:
+          - '1768283669605'
+          - structured_output
+          - organization
+          value_type: object
+          variable: organization
+        - value_selector:
+          - '1768283049479'
+          - paper_url
+          value_type: string
+          variable: url
+        - value_selector:
+          - '1768283741833'
+          - text
+          value_type: string
+          variable: text
+        - value_selector:
+          - '1768283895800'
+          - text
+          value_type: string
+          variable: time
+        - value_selector:
+          - '1768283049479'
+          - upvotes
+          value_type: string
+          variable: upvotes
+      height: 80
+      id: '1768283839785'
+      parentId: '1768283018582'
+      position:
+        x: 414.6764533435676
+        y: 366.48934824241894
+      positionAbsolute:
+        x: 1185.7946586529938
+        y: 552.0550554527222
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/tool-provider/builtin/time/icon
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d %H:%M:%S'
+          timezone:
+            type: constant
+            value: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 114
+      id: '1768283895800'
+      position:
+        x: 478.01938564894954
+        y: 185.5657072103032
+      positionAbsolute:
+        x: 478.01938564894954
+        y: 185.5657072103032
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "\n\ndef main(arg1: str):\n    return {\n        \"result\": arg1[:500],\n\
+          \    }\n\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 获取片段
+        type: code
+        variables:
+        - value_selector:
+          - '1768283611046'
+          - body
+          value_type: string
+          variable: arg1
+      height: 52
+      id: '1768295524185'
+      parentId: '1768283018582'
+      position:
+        x: 115.6321704030961
+        y: 172.81142186480693
+      positionAbsolute:
+        x: 886.7503757125223
+        y: 358.37712907511013
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-164
+            key: ''
+            type: text
+            value: '{{#1768283839785.result#}}'
+          type: json
+        headers: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Requset Lark
+        type: http-request
+        url: https://open.feishu.cn/open-apis/bot/v2/hook/{{#env.Lark_token#}}
+        variables: []
+      height: 157
+      id: '1768295797923'
+      parentId: '1768283018582'
+      position:
+        x: 119.13853248119108
+        y: 413.240073142554
+      positionAbsolute:
+        x: 890.2567377906173
+        y: 598.8057803528573
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1768283018582'
+        selected: false
+        title: 退出循环
+        type: loop-end
+      height: 54
+      id: '1768297444787'
+      parentId: '1768283018582'
+      position:
+        x: 412.16345121902236
+        y: 500.99642326153605
+      positionAbsolute:
+        x: 1183.2816565284486
+        y: 686.5621304718393
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-simple
+      width: 244
+      zIndex: 1002
+    - data:
+        outputs:
+        - value_selector:
+          - '1768283018582'
+          - output
+          value_type: array[string]
+          variable: output
+        selected: false
+        title: 输出
+        type: end
+      height: 88
+      id: '1768297474673'
+      position:
+        x: 1516.1735802823848
+        y: 185.5657072103032
+      positionAbsolute:
+        x: 1516.1735802823848
+        y: 185.5657072103032
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: KMnO4-zx
+        desc: ''
+        height: 144
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"此处获取点赞量前三的论文，如果觉得不够，可以修改数量。","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          16px;"}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 144
+      id: '1768298115140'
+      position:
+        x: 478.01938564894954
+        y: 569.5283291035561
+      positionAbsolute:
+        x: 478.01938564894954
+        y: 569.5283291035561
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: KMnO4-zx
+        desc: ''
+        height: 109
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"此处迭代处理每一篇论文，首先使用JinaAI Reader API处理在线乱嗯PDF，获取论文文本，然后送入大模型进行信息提取和总结，最终发送到飞书群机器人。","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          16px;"}}'
+        theme: green
+        title: ' (1)'
+        type: ''
+        width: 702
+      height: 109
+      id: '17682981579530'
+      position:
+        x: 771.1182053094262
+        y: 61.93762216535282
+      positionAbsolute:
+        x: 771.1182053094262
+        y: 61.93762216535282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 702
+    - data:
+        author: KMnO4-zx
+        desc: ''
+        height: 105
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"每天固定时间获取论文并处理","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
+          16px;"}}'
+        theme: yellow
+        title: ' (1)'
+        type: ''
+        width: 243
+      height: 105
+      id: '17682982812960'
+      position:
+        x: 188.48656013280709
+        y: 330.1928287790594
+      positionAbsolute:
+        x: 188.48656013280709
+        y: 330.1928287790594
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 243
+    viewport:
+      x: 22.262140766248194
+      y: 49.89041199683993
+      zoom: 1.0027764359010778
+  rag_pipeline_variables: []
