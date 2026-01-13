@@ -7,7 +7,7 @@
 &emsp;&emsp;使用 Dify 工作流的触发器功能，设置每天定时触发。工作流会自动访问 HuggingFace DailyPaper 页面，获取当天点赞量最高的三篇论文的标题、作者、摘要和链接。然后使用大模型生成每篇论文的速览笔记，包含论文代码是否开源、论文解决的问题、论文使用的评估指标及论文相比 Baseline 的优势等内容。最后通过飞书机器人将生成的论文速览笔记发送到指定的飞书群组。
 
 <div align='center'>
-    <img src="./images/hf-dailypaper.png" alt="alt text" width="90%">
+    <img src="./images/hf-dailypaper.png" alt="alt text" width="100%">
     <p>HF-DailyPaper</p>
 </div>
 
@@ -16,7 +16,7 @@
 &emsp;&emsp;ReadingPaper-Lark 工作流允许用户输入指定论文的 PDF 在线链接，然后工作流会自动调用 [JinaAI Reader](https://jina.ai/reader/) API 解析 PDF 文件，并使用大模型对论文内容进行分析和理解。工作流会生成详细的论文笔记，包含论文代码是否开源、论文解决的问题、论文使用的评估指标及论文相比 Baseline 的优势等内容。最后通过飞书机器人将生成的论文笔记发送到指定的飞书群组。
 
 <div align='center'>
-    <img src="./images/readingpaper-lark.png" alt="alt text" width="90%">
+    <img src="./images/readingpaper-lark.png" alt="alt text" width="100%">
     <p>ReadingPaper-Lark</p>
 </div>
 
