@@ -40,9 +40,11 @@ workflow:
       - remote_url
       enabled: false
       fileUploadConfig:
+        attachment_image_file_size_limit: 2
         audio_file_size_limit: 50
         batch_count_limit: 5
         file_size_limit: 15
+        file_upload_limit: 50
         image_file_batch_limit: 10
         image_file_size_limit: 10
         single_chunk_attachment_limit: 10
@@ -259,7 +261,7 @@ workflow:
           monthly_days:
           - 1
           on_minute: 36
-          time: 9:30 PM
+          time: 5:00 PM
           weekdays:
           - sun
       height: 130
@@ -314,26 +316,32 @@ workflow:
       type: custom
       width: 242
     - data:
-        code: "import json\n\ndef main(body: str):\n    try:\n        # 1. 将输入的字符串解析为\
-          \ JSON 对象 (List)\n        data = json.loads(body)\n        \n        # 2.\
-          \ 提取需要的信息并组成新的列表\n        parsed_list = []\n        for item in data:\n\
-          \            # 兼容处理：有时 paper 信息直接在 item 中，有时在 item['paper'] 中\n        \
-          \    # 根据你提供的数据结构，它在 item['paper'] 中\n            paper = item.get('paper',\
-          \ item)\n            \n            pid = paper.get('id')\n            title\
-          \ = paper.get('title')\n            summary = paper.get('summary')\n   \
-          \         upvotes = paper.get('upvotes', 0) # 默认为 0，防止字段缺失\n           \
-          \ \n            # 构造 ArXiv PDF 链接\n            pdf_link = f\"https://arxiv.org/pdf/{pid}.pdf\"\
-          \ if pid else None\n\n            parsed_list.append({\n               \
-          \ \"arxiv_id\": pid,\n                \"title\": title,\n              \
-          \  \"abstract\": summary,\n                \"upvotes\": upvotes,\n     \
-          \           \"pdf_link\": pdf_link\n            })\n            \n     \
-          \   # 3. 根据 upvotes 进行降序排序 (reverse=True)\n        # Python 的 sort 是稳定的，upvotes\
-          \ 相同的会保持原顺序\n        sorted_list = sorted(parsed_list, key=lambda x: x['upvotes'],\
-          \ reverse=True)\n        \n        # 4. 获取前三名 (Top 3)\n        top_3 = sorted_list[:3]\n\
-          \        \n        # 5. 返回结果字典，符合工作流输出要求\n        return {\n           \
-          \ \"result\": top_3\n        }\n        \n    except Exception as e:\n \
-          \       # 错误处理：如果解析失败，返回错误信息\n        return {\n            \"result\":\
-          \ [],\n            \"error\": str(e)\n        }\n"
+        code: "import json\n\ndef main(body: str, time: str):\n    try:\n        #\
+          \ 1. 将输入的字符串解析为 JSON 对象 (List)\n        data = json.loads(body)\n      \
+          \  \n        # 2. 提取需要的信息并组成新的列表\n        parsed_list = []\n        for\
+          \ item in data:\n            # 兼容处理：有时 paper 信息直接在 item 中，有时在 item['paper']\
+          \ 中\n            paper = item.get('paper', item)\n            \n       \
+          \     pid = paper.get('id')\n            title = paper.get('title')\n  \
+          \          summary = paper.get('summary')\n            upvotes = paper.get('upvotes',\
+          \ 0)  # 默认为 0，防止字段缺失\n            \n            # 获取 submittedOnDailyAt\
+          \ 字段值（如果不存在则默认为空字符串）\n            submittedOnDailyAt = paper.get('submittedOnDailyAt',\
+          \ '')\n            \n            # 检查 time 参数是否在 submittedOnDailyAt 中\n\
+          \            # 如果 time 不为空且 submittedOnDailyAt 中不包含该字符串，则跳过该项\n        \
+          \    if time and time not in submittedOnDailyAt:\n                continue\n\
+          \            \n            # 构造 ArXiv PDF 链接（修复了原代码中的空格问题）\n           \
+          \ pdf_link = f\"https://arxiv.org/pdf/{pid}.pdf\" if pid else None\n\n \
+          \           parsed_list.append({\n                \"arxiv_id\": pid,\n \
+          \               \"title\": title,\n                \"abstract\": summary,\n\
+          \                \"upvotes\": upvotes,\n                \"pdf_link\": pdf_link\n\
+          \            })\n            \n        # 3. 根据 upvotes 进行降序排序 (reverse=True)\n\
+          \        # Python 的 sort 是稳定的，upvotes 相同的会保持原顺序\n        sorted_list = sorted(parsed_list,\
+          \ key=lambda x: x['upvotes'], reverse=True)\n        \n        # 4. 获取前三名\
+          \ (Top 3)，如果不足3个则返回全部\n        if len(sorted_list) < 3:\n            top_3\
+          \ = sorted_list\n        else:\n            top_3 = sorted_list[:3]\n  \
+          \      \n        # 5. 返回结果字典，符合工作流输出要求\n        return {\n            \"\
+          result\": top_3\n        }\n        \n    except Exception as e:\n     \
+          \   # 错误处理：如果解析失败，返回错误信息\n        return {\n            \"result\": [],\n\
+          \            \"error\": str(e)\n        }"
         code_language: python3
         outputs:
           result:
@@ -348,6 +356,11 @@ workflow:
           - body
           value_type: string
           variable: body
+        - value_selector:
+          - '1768283895800'
+          - text
+          value_type: string
+          variable: time
       height: 52
       id: '1768282297599'
       position:
@@ -371,8 +384,8 @@ workflow:
         - '1768282297599'
         - result
         output_selector:
-        - '1768283049479'
-        - upvotes
+        - '1768283741833'
+        - text
         output_type: array[string]
         parallel_nums: 10
         selected: false
@@ -388,7 +401,7 @@ workflow:
       positionAbsolute:
         x: 771.1182053094262
         y: 185.5657072103032
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -884,7 +897,7 @@ workflow:
         tool_configurations:
           format:
             type: mixed
-            value: '%Y-%m-%d %H:%M:%S'
+            value: '%Y-%m-%d'
           timezone:
             type: constant
             value: Asia/Shanghai
@@ -902,7 +915,7 @@ workflow:
       positionAbsolute:
         x: 478.01938564894954
         y: 185.5657072103032
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1036,38 +1049,11 @@ workflow:
     - data:
         author: KMnO4-zx
         desc: ''
-        height: 144
-        selected: false
-        showAuthor: true
-        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
-          16px;","text":"此处获取点赞量前三的论文，如果觉得不够，可以修改数量。","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
-          16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
-          16px;"}}'
-        theme: blue
-        title: ''
-        type: ''
-        width: 240
-      height: 144
-      id: '1768298115140'
-      position:
-        x: 478.01938564894954
-        y: 569.5283291035561
-      positionAbsolute:
-        x: 478.01938564894954
-        y: 569.5283291035561
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom-note
-      width: 240
-    - data:
-        author: KMnO4-zx
-        desc: ''
         height: 109
         selected: false
         showAuthor: true
         text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
-          16px;","text":"此处迭代处理每一篇论文，首先使用JinaAI Reader API处理在线乱嗯PDF，获取论文文本，然后送入大模型进行信息提取和总结，最终发送到飞书群机器人。","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          16px;","text":"此处迭代处理每一篇论文，首先使用JinaAI Reader API处理在线论文PDF，获取论文文本，然后送入大模型进行信息提取和总结，最终发送到飞书群机器人。","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
           16px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1,"textStyle":"font-size:
           16px;"}}'
         theme: green
@@ -1115,7 +1101,7 @@ workflow:
       type: custom-note
       width: 243
     viewport:
-      x: 22.262140766248194
-      y: 49.89041199683993
+      x: 25.280912213023157
+      y: -20.703081681458116
       zoom: 1.0027764359010778
   rag_pipeline_variables: []
