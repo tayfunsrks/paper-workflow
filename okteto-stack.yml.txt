@@ -1,0 +1,22 @@
+services:
+  k4:
+    build: .
+    environment:
+      CONFIG_FILE_URL: $CONFIG_FILE_URL
+    ports:
+      - 8080
+    resources:
+      cpu: 1000m
+      memory: 3Gi
+    command: python3 bot.py
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    environment:
+      - MONGODB_ROOT_PASSWORD=F1zDsr6nwUwVo79KpbT2N3pJNqhwYHKsyHf9BuMC9DmrLI5l14NJzaivuqeyQGRJEEeJ2
+      - MONGODB_PORT_NUMBER=27017
+    volumes:
+      - 'mongodb_veri:/bitnami'
+volumes:
+  mongodb_veri:
+    enabled: true
+    size: 5Gi
